@@ -4,8 +4,8 @@ This repo is **only a how-to**. It is not the watermark tool.
 
 The real tool is here:
 
-**[github.com/guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)**  
-by [Guillaume Meyer](https://github.com/guillaumemeyer) · [v0.5.0](https://github.com/guillaumemeyer/watermarks-remover/releases/tag/v0.5.0)
+**<a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">github.com/guillaumemeyer/watermarks-remover</a>**  
+by <a href="https://github.com/guillaumemeyer" target="_blank" rel="noopener noreferrer">Guillaume Meyer</a> · <a href="https://github.com/guillaumemeyer/watermarks-remover/releases/tag/v0.5.0" target="_blank" rel="noopener noreferrer">v0.5.0</a>
 
 This guide tells you how to put that tool on:
 
@@ -35,14 +35,14 @@ That duty is **not** “if you clean your own file, you go to jail.”
 
 | Who | Duty | Source |
 | --- | --- | --- |
-| **Providers** (the AI companies) | Mark synthetic text / image / audio / video so a machine can tell it is AI-made | [Article 50(2)](https://artificialintelligenceact.eu/article/50/) of [Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) |
-| **Deployers** (who *use* the AI in public) | Say so if they publish a deepfake, or AI text meant to inform the public | [Article 50(4)](https://artificialintelligenceact.eu/article/50/) |
+| **Providers** (the AI companies) | Mark synthetic text / image / audio / video so a machine can tell it is AI-made | <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener noreferrer">Article 50(2)</a> of <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer">Regulation (EU) 2024/1689</a> |
+| **Deployers** (who *use* the AI in public) | Say so if they publish a deepfake, or AI text meant to inform the public | <a href="https://artificialintelligenceact.eu/article/50/" target="_blank" rel="noopener noreferrer">Article 50(4)</a> |
 | **A person cleaning their own file** | Article 50 does **not** name you as the one who must keep the mark | same article |
 
 The AI Act’s own punishments are **company fines**, not prison for a consumer:
 
-- [Article 99](https://artificialintelligenceact.eu/article/99/) — administrative fines on providers, deployers, and other operators
-- Official text: [EUR-Lex, Regulation (EU) 2024/1689](https://eur-lex.europa.eu/eli/reg/2024/1689/oj)
+- <a href="https://artificialintelligenceact.eu/article/99/" target="_blank" rel="noopener noreferrer">Article 99</a> — administrative fines on providers, deployers, and other operators
+- Official text: <a href="https://eur-lex.europa.eu/eli/reg/2024/1689/oj" target="_blank" rel="noopener noreferrer">EUR-Lex, Regulation (EU) 2024/1689</a>
 
 So: **yes, those marking rules are aimed at companies (and some professional users), not at jailing an end user who removes marks from content they own, or who rephrases their own text.**
 
@@ -55,13 +55,13 @@ The AI Act is not the only law.
 Do **not** use this to:
 
 - Pretend AI work is 100% human when a school, job, court, or publisher requires disclosure
-- Strip marks from **someone else’s** file you do not own (copyright / rights-management rules can apply, including [Directive 2001/29/EC Article 7](https://eur-lex.europa.eu/eli/dir/2001/29/oj) on rights-management information)
+- Strip marks from **someone else’s** file you do not own (copyright / rights-management rules can apply, including <a href="https://eur-lex.europa.eu/eli/dir/2001/29/oj" target="_blank" rel="noopener noreferrer">Directive 2001/29/EC Article 7</a> on rights-management information)
 - Hide a deepfake or public-interest AI text that **you** publish (that can be a **deployer** duty under Article 50(4))
 - Break a website or app’s own rules (a company may ban stripping metadata in its terms)
 
 The official tool says the same thing in its ethics note: use it on **content you own**, and do not claim “this proves a human wrote it.”
 
-See: [ethics.md in watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover/blob/main/skills/remove-ai-marks/references/ethics.md)
+See: <a href="https://github.com/guillaumemeyer/watermarks-remover/blob/main/skills/remove-ai-marks/references/ethics.md" target="_blank" rel="noopener noreferrer">ethics.md in watermarks-remover</a>
 
 ### Short version
 
@@ -106,9 +106,9 @@ Website chat can rewrite words if you paste them. It **cannot** clean files.
 
 Install these if they are missing (one-time):
 
-1. [Git for Windows](https://git-scm.com/download/win)
-2. [Python 3](https://www.python.org/downloads/) — tick **Add python.exe to PATH**
-3. [Node.js](https://nodejs.org/) — this gives you `npx`
+1. <a href="https://git-scm.com/download/win" target="_blank" rel="noopener noreferrer">Git for Windows</a>
+2. <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">Python 3</a> — tick **Add python.exe to PATH**
+3. <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> — this gives you `npx`
 
 Then in PowerShell:
 
@@ -134,7 +134,7 @@ Already downloaded?
 cd $HOME\watermarks-remover
 ```
 
-Source: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
+Source: <a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">guillaumemeyer/watermarks-remover</a>
 
 ## W3. Teach the coding AIs
 
@@ -245,7 +245,7 @@ Already downloaded?
 cd ~/watermarks-remover
 ```
 
-Source: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
+Source: <a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">guillaumemeyer/watermarks-remover</a>
 
 ## M3. Teach the coding AIs
 
@@ -327,7 +327,7 @@ python3 service/scripts/clean_file.py /path/to/your-file.md -o /path/to/your-fil
 
 Need the `agy` command?
 
-- **Windows:** install [Antigravity CLI](https://antigravity.google/product/antigravity-cli)
+- **Windows:** install <a href="https://antigravity.google/product/antigravity-cli" target="_blank" rel="noopener noreferrer">Antigravity CLI</a>
 - **Mac:** same link, or `brew install --cask antigravity-cli`
 
 ---
@@ -361,7 +361,7 @@ Need the `agy` command?
 
 Only use it on files you own.
 
-Full details: [official README](https://github.com/guillaumemeyer/watermarks-remover#readme)
+Full details: <a href="https://github.com/guillaumemeyer/watermarks-remover#readme" target="_blank" rel="noopener noreferrer">official README</a>
 
 ---
 
@@ -393,6 +393,6 @@ Full details: [official README](https://github.com/guillaumemeyer/watermarks-rem
 
 ## Credits
 
-- Tool: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
-- Skill name in that repo: [`remove-ai-marks`](https://github.com/guillaumemeyer/watermarks-remover/tree/main/skills/remove-ai-marks)
+- Tool: <a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">guillaumemeyer/watermarks-remover</a>
+- Skill name in that repo: <a href="https://github.com/guillaumemeyer/watermarks-remover/tree/main/skills/remove-ai-marks" target="_blank" rel="noopener noreferrer">`remove-ai-marks`</a>
 - This repo: install steps only, with a full Windows track and a full Mac track
