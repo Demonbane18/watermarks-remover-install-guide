@@ -16,7 +16,10 @@ This guide tells you how to put that tool on:
 
 It does **not** copy their code. Install the tool from their repo.
 
-Works on **Mac, Windows, and Linux**. Nothing below is tied to one person’s computer.
+**Does this only work on a Mac?** No.
+
+The official tool and these steps work on **Windows, macOS, and Linux**.  
+“Mac” only shows up when a button is different on Apple computers (for example how you open Terminal).
 
 ---
 
@@ -91,11 +94,11 @@ Website chat can rewrite words if you paste them. It **cannot** clean files.
 
 ## What you need
 
-- A computer (Mac, Windows, or Linux)
-- A terminal:
-  - **Mac:** Spotlight → type `Terminal` → Enter
-  - **Windows:** Start → type `PowerShell` or `Git Bash` → Enter  
-    (Git Bash is easier for the copy-paste steps)
+- Any computer: **Windows, macOS, or Linux**
+- A terminal (the text window):
+  - **Windows:** Start menu → type `PowerShell` or `Git Bash` → Enter  
+    (Git Bash is easier for copy-paste)
+  - **macOS:** press Command + Space → type `Terminal` → Enter
   - **Linux:** open **Terminal**
 - `git`, `python3` (or `py` on Windows), and `npx` (comes with Node.js)
 
@@ -116,7 +119,7 @@ On Windows, if `python3` fails, try `py --version` and use `py` later instead of
 1. Open your terminal.
 2. Go to your home folder, then download the tool into a new folder named `watermarks-remover`.
 
-**Mac / Linux / Git Bash:**
+**Windows Git Bash, macOS, or Linux:**
 
 ```bash
 cd ~
@@ -169,9 +172,11 @@ This one command teaches Grok, Claude Code, Gemini, and Codex on any computer.
 
 ---
 
-# Step 3 — Extra links (Mac, Linux, Git Bash)
+# Step 3 — Extra links (skip on Windows PowerShell)
 
-Skip this on Windows PowerShell. Step 2 is enough there.
+Skip this in Windows PowerShell. Step 2 is enough there.
+
+Use this in Git Bash, macOS Terminal, or Linux Terminal:
 
 ```bash
 mkdir -p ~/.grok/skills ~/.claude/skills ~/.codex/skills \
@@ -196,7 +201,7 @@ Do this **every time** you want to clean a file.
 1. Open a terminal.
 2. Go into the tool folder, then start it.
 
-**Mac / Linux / Git Bash:**
+**Windows Git Bash, macOS, or Linux:**
 
 ```bash
 cd ~/watermarks-remover
@@ -266,8 +271,8 @@ Please strip AI watermarks from this file: path/to/your-file.png
 
 How to get a file path:
 
-- **Mac:** right-click the file → hold Option → **Copy as Pathname**
 - **Windows:** Shift + right-click the file → **Copy as path**
+- **macOS:** right-click the file → hold Option → **Copy as Pathname**
 - **Linux:** right-click → **Copy** / look at the location bar
 
 6. It should make a new file named something like `draft.cleaned.md`. Your original stays safe.
@@ -302,10 +307,9 @@ If you use the **Antigravity** app instead, open a new chat there and type the s
 
 Do **not** use gemini.google.com.
 
-Need `agy` first?
+Need `agy` first? Install [Antigravity CLI](https://antigravity.google/product/antigravity-cli) for your system.
 
-- **Mac:** `brew install --cask antigravity-cli`
-- **Windows / Linux:** install [Antigravity CLI](https://antigravity.google/product/antigravity-cli) from Google
+On macOS you can also use: `brew install --cask antigravity-cli`
 
 ---
 
@@ -345,7 +349,7 @@ No `ok: true`? The washer is off.
 
 Washer must be on. Put your file in the current folder, or use its real path.
 
-**Mac / Linux / Git Bash:**
+**Windows Git Bash, macOS, or Linux:**
 
 ```bash
 cd ~/watermarks-remover
