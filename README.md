@@ -16,6 +16,8 @@ This guide tells you how to put that tool on:
 
 It does **not** copy their code. Install the tool from their repo.
 
+Works on **Mac, Windows, and Linux**. Nothing below is tied to one person’s computer.
+
 ---
 
 ## Read this first (plain-language law note)
@@ -74,14 +76,14 @@ Use the **coding app**, not the **website chat**.
 | App you might open | Use it? |
 | --- | --- |
 | grok.com, Grok on your phone | No |
-| **Grok Build** (type `grok` in Terminal) | **Yes** |
+| **Grok Build** (type `grok` in the terminal) | **Yes** |
 | claude.ai website | No |
 | Claude Cowork | No |
 | **Claude Code** | **Yes** |
 | gemini.google.com | No |
-| **Antigravity** or type `agy` in Terminal | **Yes** |
+| **Antigravity** or type `agy` in the terminal | **Yes** |
 | chatgpt.com | No |
-| **Codex** (app or type `codex` in Terminal) | **Yes** |
+| **Codex** (app or type `codex` in the terminal) | **Yes** |
 
 Website chat can rewrite words if you paste them. It **cannot** clean files.
 
@@ -89,23 +91,58 @@ Website chat can rewrite words if you paste them. It **cannot** clean files.
 
 ## What you need
 
-- A Mac
-- Terminal (Spotlight → type **Terminal** → Enter)
+- A computer (Mac, Windows, or Linux)
+- A terminal:
+  - **Mac:** Spotlight → type `Terminal` → Enter
+  - **Windows:** Start → type `PowerShell` or `Git Bash` → Enter  
+    (Git Bash is easier for the copy-paste steps)
+  - **Linux:** open **Terminal**
+- `git`, `python3` (or `py` on Windows), and `npx` (comes with Node.js)
+
+Check:
+
+```bash
+git --version
+python3 --version
+npx --version
+```
+
+On Windows, if `python3` fails, try `py --version` and use `py` later instead of `python3`.
 
 ---
 
 # Step 1 — Get the official tool
 
-1. Open **Terminal**.
-2. Copy this whole block. Paste it. Press Enter.
+1. Open your terminal.
+2. Go to your home folder, then download the tool into a new folder named `watermarks-remover`.
+
+**Mac / Linux / Git Bash:**
 
 ```bash
-mkdir -p ~/Documents/video\ tutorials/watermark-remover
-cd ~/Documents/video\ tutorials/watermark-remover
-git clone --depth 1 --branch v0.5.0 https://github.com/guillaumemeyer/watermarks-remover.git .
+cd ~
+git clone --depth 1 --branch v0.5.0 https://github.com/guillaumemeyer/watermarks-remover.git
+cd watermarks-remover
 ```
 
-If it says the folder is not empty, you already have the tool. That’s fine. Keep going.
+**Windows PowerShell:**
+
+```powershell
+cd $HOME
+git clone --depth 1 --branch v0.5.0 https://github.com/guillaumemeyer/watermarks-remover.git
+cd watermarks-remover
+```
+
+If it says the folder already exists, you already have the tool. Just go into it:
+
+```bash
+cd ~/watermarks-remover
+```
+
+PowerShell:
+
+```powershell
+cd $HOME\watermarks-remover
+```
 
 Source: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
 
@@ -113,23 +150,28 @@ Source: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/wa
 
 # Step 2 — Teach every coding AI
 
-Still in Terminal, copy this. Paste. Press Enter.
+You must be **inside** the `watermarks-remover` folder (the last `cd` above). Then paste this:
 
 ```bash
-cd ~/Documents/video\ tutorials/watermark-remover
 npx skills add . --skill remove-ai-marks -g -y \
   -a grok -a claude-code -a gemini-cli -a antigravity -a antigravity-cli -a codex
 ```
 
+One line if you prefer:
+
+```bash
+npx skills add . --skill remove-ai-marks -g -y -a grok -a claude-code -a gemini-cli -a antigravity -a antigravity-cli -a codex
+```
+
 Wait until it says **Done**.
 
-This one command teaches Grok, Claude Code, Gemini, and Codex.
+This one command teaches Grok, Claude Code, Gemini, and Codex on any computer.
 
 ---
 
-# Step 3 — Extra links (so nothing is missed)
+# Step 3 — Extra links (Mac, Linux, Git Bash)
 
-Copy this. Paste. Press Enter.
+Skip this on Windows PowerShell. Step 2 is enough there.
 
 ```bash
 mkdir -p ~/.grok/skills ~/.claude/skills ~/.codex/skills \
@@ -143,23 +185,41 @@ ln -sfn ~/.agents/skills/remove-ai-marks ~/.gemini/antigravity/skills/remove-ai-
 ln -sfn ~/.agents/skills/remove-ai-marks ~/.gemini/antigravity-cli/skills/remove-ai-marks
 ```
 
+`~` means **your** home folder. It is not one specific person’s path.
+
 ---
 
 # Turn the washer on
 
 Do this **every time** you want to clean a file.
 
-1. Open a Terminal window.
-2. Copy this. Paste. Press Enter.
+1. Open a terminal.
+2. Go into the tool folder, then start it.
+
+**Mac / Linux / Git Bash:**
 
 ```bash
-cd ~/Documents/video\ tutorials/watermark-remover
+cd ~/watermarks-remover
 make serve
+```
+
+If `make` is missing:
+
+```bash
+cd ~/watermarks-remover
+python3 service/scripts/server.py --host 127.0.0.1 --port 8765
+```
+
+**Windows PowerShell:**
+
+```powershell
+cd $HOME\watermarks-remover
+py service\scripts\server.py --host 127.0.0.1 --port 8765
 ```
 
 3. Leave that window open.
 
-4. Open a **second** Terminal window and check:
+4. Open a **second** terminal and check:
 
 ```bash
 curl -s http://127.0.0.1:8765/health
@@ -173,7 +233,7 @@ You should see something like:
 
 If you see that, the washer is on.
 
-When you are finished cleaning, go back to the first Terminal and press **Control + C**. That turns it off. You do not need it running all day.
+When you are finished, go back to the first terminal and press **Ctrl + C**. That turns it off. You do not need it running all day.
 
 ---
 
@@ -188,17 +248,27 @@ When you are finished cleaning, go back to the first Terminal and press **Contro
 /remove-ai-marks
 ```
 
-5. Then give it a file, like:
+5. Then give it **your** file. Use the real path on your computer.
+
+Examples:
 
 ```text
-/remove-ai-marks /Users/you/Desktop/draft.md
+/remove-ai-marks draft.md
+/remove-ai-marks ./photo.png
+/remove-ai-marks path/to/your-file.docx
 ```
 
 or just say:
 
 ```text
-Please strip AI watermarks from this file: /Users/you/Desktop/photo.png
+Please strip AI watermarks from this file: path/to/your-file.png
 ```
+
+How to get a file path:
+
+- **Mac:** right-click the file → hold Option → **Copy as Pathname**
+- **Windows:** Shift + right-click the file → **Copy as path**
+- **Linux:** right-click → **Copy** / look at the location bar
 
 6. It should make a new file named something like `draft.cleaned.md`. Your original stays safe.
 
@@ -206,7 +276,7 @@ Please strip AI watermarks from this file: /Users/you/Desktop/photo.png
 
 ## Grok
 
-1. Open Terminal.
+1. Open a terminal.
 2. Type `grok` and press Enter.
 3. Type `/remove-ai-marks` and your file.
 
@@ -224,7 +294,7 @@ Do **not** use grok.com.
 
 ## Gemini
 
-1. In Terminal, type `agy` and press Enter.
+1. In a terminal, type `agy` and press Enter.
    - First time may ask you to sign in. Do that once.
 2. Type `/remove-ai-marks` and your file.
 
@@ -232,17 +302,16 @@ If you use the **Antigravity** app instead, open a new chat there and type the s
 
 Do **not** use gemini.google.com.
 
-Need the Gemini programs first?
+Need `agy` first?
 
-```bash
-brew install --cask antigravity-cli
-```
+- **Mac:** `brew install --cask antigravity-cli`
+- **Windows / Linux:** install [Antigravity CLI](https://antigravity.google/product/antigravity-cli) from Google
 
 ---
 
 ## ChatGPT / OpenAI
 
-1. Open **Codex** (the app, or type `codex` in Terminal).
+1. Open **Codex** (the app, or type `codex` in a terminal).
 2. Start a new session.
 3. Type `/remove-ai-marks` and your file.
 
@@ -274,16 +343,25 @@ No `ok: true`? The washer is off.
 
 # Clean a file yourself (no AI)
 
-Washer must be on.
+Washer must be on. Put your file in the current folder, or use its real path.
+
+**Mac / Linux / Git Bash:**
 
 ```bash
-cd ~/Documents/video\ tutorials/watermark-remover
+cd ~/watermarks-remover
 
-python3 service/scripts/inspect_file.py /Users/you/Desktop/draft.md
-python3 service/scripts/clean_file.py /Users/you/Desktop/draft.md -o /Users/you/Desktop/draft.cleaned.md
+python3 service/scripts/inspect_file.py path/to/your-file.md
+python3 service/scripts/clean_file.py path/to/your-file.md -o path/to/your-file.cleaned.md
 ```
 
-Change the paths to your real file.
+**Windows PowerShell:**
+
+```powershell
+cd $HOME\watermarks-remover
+
+py service\scripts\inspect_file.py path\to\your-file.md
+py service\scripts\clean_file.py path\to\your-file.md -o path\to\your-file.cleaned.md
+```
 
 ---
 
@@ -310,11 +388,12 @@ Full details: [official README](https://github.com/guillaumemeyer/watermarks-rem
 # Tiny cheat sheet
 
 ```text
-1. Terminal → make serve          (leave it open)
-2. Other Terminal → curl health   (look for ok: true)
-3. Open grok / Claude Code / agy / Codex
-4. Type /remove-ai-marks + your file
-5. When done: Control + C in the serve window
+1. cd into watermarks-remover
+2. Start the washer (make serve  or  python3 service/scripts/server.py)
+3. In another terminal: curl http://127.0.0.1:8765/health
+4. Open grok / Claude Code / agy / Codex
+5. Type /remove-ai-marks + your file
+6. When done: Ctrl + C in the washer window
 ```
 
 ---
@@ -323,4 +402,4 @@ Full details: [official README](https://github.com/guillaumemeyer/watermarks-rem
 
 - Tool: [guillaumemeyer/watermarks-remover](https://github.com/guillaumemeyer/watermarks-remover)
 - Skill name in that repo: [`remove-ai-marks`](https://github.com/guillaumemeyer/watermarks-remover/tree/main/skills/remove-ai-marks)
-- This repo: install steps only, written so a beginner can follow them
+- This repo: install steps only, written so a beginner can follow them on any computer
