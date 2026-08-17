@@ -89,6 +89,14 @@ Use the **coding app**, not the **website chat**.
 
 Website chat can rewrite words if you paste them. It **cannot** clean files.
 
+### Always put paths in double quotes
+
+Folder names can have spaces (for example `video tutorials`). Wrap **every** file or folder path in `"double quotes"` or the command will split and fail.
+
+```text
+python3 "service/scripts/inspect_file.py" "/Users/yourname/Documents/video tutorials/file.md"
+```
+
 ---
 
 ## Pick your computer
@@ -123,15 +131,15 @@ All three should print a version number.
 ## W2. Get the official tool
 
 ```powershell
-cd $HOME
+cd "$HOME"
 git clone --depth 1 --branch v0.5.0 https://github.com/guillaumemeyer/watermarks-remover.git
-cd watermarks-remover
+cd "watermarks-remover"
 ```
 
 Already downloaded?
 
 ```powershell
-cd $HOME\watermarks-remover
+cd "$HOME\watermarks-remover"
 ```
 
 Source: <a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">guillaumemeyer/watermarks-remover</a>
@@ -171,8 +179,8 @@ If a line fails, Step W3 is still enough for most apps.
 Every time you want to clean a file:
 
 ```powershell
-cd $HOME\watermarks-remover
-py service\scripts\server.py --host 127.0.0.1 --port 8765
+cd "$HOME\watermarks-remover"
+py "service\scripts\server.py" --host 127.0.0.1 --port 8765
 ```
 
 Leave that window open.
@@ -180,7 +188,7 @@ Leave that window open.
 Open a **second** PowerShell window and check:
 
 ```powershell
-curl.exe -s http://127.0.0.1:8765/health
+curl.exe -s "http://127.0.0.1:8765/health"
 ```
 
 You should see `{"ok": true, ...}`.
@@ -193,10 +201,10 @@ When you are done, click the first window and press **Ctrl + C**.
 2. Open **Claude Code**, **Codex**, **Grok Build**, or **Antigravity**.
 3. Start a **new** session.
 4. Type `/remove-ai-marks`.
-5. Paste your file path: **Shift + right-click** the file → **Copy as path**.
+5. Paste your file path **inside double quotes**. On Windows: **Shift + right-click** the file → **Copy as path** (that already includes quotes).
 
 ```text
-/remove-ai-marks C:\Users\YourName\Documents\draft.md
+/remove-ai-marks "C:\Users\YourName\Documents\draft.md"
 ```
 
 It writes `draft.cleaned.md`. The original stays safe.
@@ -204,9 +212,9 @@ It writes `draft.cleaned.md`. The original stays safe.
 ### Clean without an AI (Windows)
 
 ```powershell
-cd $HOME\watermarks-remover
-py service\scripts\inspect_file.py C:\path\to\your-file.md
-py service\scripts\clean_file.py C:\path\to\your-file.md -o C:\path\to\your-file.cleaned.md
+cd "$HOME\watermarks-remover"
+py "service\scripts\inspect_file.py" "C:\path\to\your-file.md"
+py "service\scripts\clean_file.py" "C:\path\to\your-file.md" -o "C:\path\to\your-file.cleaned.md"
 ```
 
 ---
@@ -217,9 +225,9 @@ py service\scripts\clean_file.py C:\path\to\your-file.md -o C:\path\to\your-file
 
 You already have Terminal. Also need:
 
-1. `git` (if asked: `xcode-select --install`)
-2. Python 3
-3. Node.js (for `npx`)
+1. <a href="https://git-scm.com/download/mac" target="_blank" rel="noopener noreferrer">Git</a> — or Xcode tools: `xcode-select --install` if asked
+2. <a href="https://www.python.org/downloads/" target="_blank" rel="noopener noreferrer">Python 3</a>
+3. <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer">Node.js</a> — this gives you `npx`
 
 Then in Terminal:
 
@@ -234,15 +242,15 @@ All three should print a version number.
 ## M2. Get the official tool
 
 ```bash
-cd ~
+cd "$HOME"
 git clone --depth 1 --branch v0.5.0 https://github.com/guillaumemeyer/watermarks-remover.git
-cd watermarks-remover
+cd "watermarks-remover"
 ```
 
 Already downloaded?
 
 ```bash
-cd ~/watermarks-remover
+cd "$HOME/watermarks-remover"
 ```
 
 Source: <a href="https://github.com/guillaumemeyer/watermarks-remover" target="_blank" rel="noopener noreferrer">guillaumemeyer/watermarks-remover</a>
@@ -258,32 +266,32 @@ Wait until it says **Done**.
 ## M4. Extra links (so every app finds the skill)
 
 ```bash
-mkdir -p ~/.grok/skills ~/.claude/skills ~/.codex/skills \
-  ~/.gemini/skills ~/.gemini/antigravity/skills ~/.gemini/antigravity-cli/skills
+mkdir -p "$HOME/.grok/skills" "$HOME/.claude/skills" "$HOME/.codex/skills" \
+  "$HOME/.gemini/skills" "$HOME/.gemini/antigravity/skills" "$HOME/.gemini/antigravity-cli/skills"
 
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.grok/skills/remove-ai-marks
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.claude/skills/remove-ai-marks
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.codex/skills/remove-ai-marks
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.gemini/skills/remove-ai-marks
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.gemini/antigravity/skills/remove-ai-marks
-ln -sfn ~/.agents/skills/remove-ai-marks ~/.gemini/antigravity-cli/skills/remove-ai-marks
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.grok/skills/remove-ai-marks"
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.claude/skills/remove-ai-marks"
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.codex/skills/remove-ai-marks"
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.gemini/skills/remove-ai-marks"
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.gemini/antigravity/skills/remove-ai-marks"
+ln -sfn "$HOME/.agents/skills/remove-ai-marks" "$HOME/.gemini/antigravity-cli/skills/remove-ai-marks"
 ```
 
-`~` means **your** home folder on this Mac.
+`$HOME` means **your** home folder on this Mac.
 
 ## M5. Turn the washer on
 
 Every time you want to clean a file:
 
 ```bash
-cd ~/watermarks-remover
-python3 service/scripts/server.py --host 127.0.0.1 --port 8765
+cd "$HOME/watermarks-remover"
+python3 "service/scripts/server.py" --host 127.0.0.1 --port 8765
 ```
 
 Or, if you have `make`:
 
 ```bash
-cd ~/watermarks-remover
+cd "$HOME/watermarks-remover"
 make serve
 ```
 
@@ -292,7 +300,7 @@ Leave that window open.
 Open a **second** Terminal window and check:
 
 ```bash
-curl -s http://127.0.0.1:8765/health
+curl -s "http://127.0.0.1:8765/health"
 ```
 
 You should see `{"ok": true, ...}`.
@@ -305,10 +313,10 @@ When you are done, click the first window and press **Ctrl + C**.
 2. Open **Claude Code**, **Codex**, **Grok Build**, or **Antigravity**.
 3. Start a **new** session.
 4. Type `/remove-ai-marks`.
-5. Paste your file path: right-click the file, hold **Option**, click **Copy as Pathname**.
+5. Paste your file path **inside double quotes**. On a Mac: right-click the file, hold **Option**, click **Copy as Pathname**.
 
 ```text
-/remove-ai-marks /Users/yourname/Documents/draft.md
+/remove-ai-marks "/Users/yourname/Documents/draft.md"
 ```
 
 It writes `draft.cleaned.md`. The original stays safe.
@@ -316,9 +324,9 @@ It writes `draft.cleaned.md`. The original stays safe.
 ### Clean without an AI (Mac)
 
 ```bash
-cd ~/watermarks-remover
-python3 service/scripts/inspect_file.py /path/to/your-file.md
-python3 service/scripts/clean_file.py /path/to/your-file.md -o /path/to/your-file.cleaned.md
+cd "$HOME/watermarks-remover"
+python3 "service/scripts/inspect_file.py" "/path/to/your-file.md"
+python3 "service/scripts/clean_file.py" "/path/to/your-file.md" -o "/path/to/your-file.cleaned.md"
 ```
 
 ---
@@ -339,9 +347,10 @@ Need the `agy` command?
 | `py` / `python3` not found | Install Python. On Windows tick **Add to PATH**, then open a **new** PowerShell. |
 | `npx` not found | Install Node.js, then open a **new** terminal. |
 | `git` not found | Install Git, then open a **new** terminal. |
+| `unrecognized arguments` / path split | Wrap the path in `"double quotes"`. Spaces in folder names break unquoted paths. |
 | Skill not found | New session. Use Claude Code / Codex / Grok / Antigravity, not the website. |
 | Service is down | Do W5 or M5 again. |
-| Check washer | Windows: `curl.exe -s http://127.0.0.1:8765/health` · Mac: `curl -s http://127.0.0.1:8765/health` |
+| Check washer | Windows: `curl.exe -s "http://127.0.0.1:8765/health"` · Mac: `curl -s "http://127.0.0.1:8765/health"` |
 
 ---
 
@@ -370,22 +379,22 @@ Full details: <a href="https://github.com/guillaumemeyer/watermarks-remover#read
 **Windows**
 
 ```text
-1. PowerShell → cd $HOME\watermarks-remover
-2. py service\scripts\server.py --host 127.0.0.1 --port 8765
-3. Other window: curl.exe -s http://127.0.0.1:8765/health
+1. PowerShell → cd "$HOME\watermarks-remover"
+2. py "service\scripts\server.py" --host 127.0.0.1 --port 8765
+3. Other window: curl.exe -s "http://127.0.0.1:8765/health"
 4. Open Claude Code / Codex / grok / agy
-5. /remove-ai-marks + your file
+5. /remove-ai-marks "C:\path\to\your-file.md"
 6. Ctrl + C when done
 ```
 
 **Mac**
 
 ```text
-1. Terminal → cd ~/watermarks-remover
-2. python3 service/scripts/server.py --host 127.0.0.1 --port 8765
-3. Other window: curl -s http://127.0.0.1:8765/health
+1. Terminal → cd "$HOME/watermarks-remover"
+2. python3 "service/scripts/server.py" --host 127.0.0.1 --port 8765
+3. Other window: curl -s "http://127.0.0.1:8765/health"
 4. Open Claude Code / Codex / grok / agy
-5. /remove-ai-marks + your file
+5. /remove-ai-marks "/path/to/your-file.md"
 6. Ctrl + C when done
 ```
 
